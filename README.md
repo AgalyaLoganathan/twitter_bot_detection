@@ -5,4 +5,4 @@ Before executing the extract_tweet_info.py program, ensure your local mongo inst
 Change the bots and humans file locations accordingly.
 Check if the extracted fields are sufficient.
 
-access_bot_info.py reads all bot documents stored. 
+access_bot_info.py reads all bot documents stored.
