@@ -23,9 +23,11 @@ def calculate_standard_error(values, mean_value):
        print(values)
        raise
 
-
+count = 0
 bot_accounts = bot_collection.distinct('name')
 for bot_account in bot_accounts:
+ if count <= 50:
+    count += 1
     bot_tweet_times = []
     bot_tweets = bot_collection.find({'name': bot_account})
     for tweet in bot_tweets:
@@ -46,7 +48,7 @@ for bot_account in bot_accounts:
         if entry < (mean_value - standard_error) or entry > (mean_value + standard_error):
             count_of_days += 1
 
-    trend = count_of_days / len(tweet_trend)
+    trend = (count_of_days / len(tweet_trend))*100
     file_io.write(bot_account + " , " + str(trend))
     file_io.write('\n')
 

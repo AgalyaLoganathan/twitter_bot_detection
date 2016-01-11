@@ -9,10 +9,13 @@ stemmer = SnowballStemmer("english")
 client = MongoClient()
 db = client.twitter
 bot_collection = db.bot_collection
-file_io = open('bot_similar_tweets.txt', 'a')
+file_io = open('bot_similar_tweets_111.txt', 'a')
 
+count = 0
 bot_accounts = bot_collection.distinct('name')
 for bot_account in bot_accounts:
+ if count <= 10:
+    count += 1
     bot_tweets = []
     bot_tweets_info = bot_collection.find({'name': bot_account})
     filtered_tweets = []
